@@ -31,6 +31,14 @@ Usage
 
 Ideas
 -----
+- May be we should about two ways:
+  Maven Deployment Tool Plugin (which can be configured into a project)
+    -> mvn mdt:release -> get latest release version
+    -> mvn mdt:current
+
+  Maven Deployment Tool (mdt) via command line.
+  mdt deployment
+
 - What about the situation:
   Having a Maven project which has been build and now you would like to deploy it.
   -> Have a deployment plugin which handles this ?
@@ -49,11 +57,76 @@ Ideas
 
 - Deploy to multiple Tomcats on mutliple machines.
 
+- Deployment of a cli application ? 
+
+- Introduce a life-cycle for deployment
+
+  validate            => pre check if configuration is ok ? May be other things?
+  initialize
+
+  prepare-download
+  download            => Download Tomcat ? Really need if we think about a concept like Maven
+  post-download
+
+  prepare-install
+  install             => Install Tomcat on a machine
+  post-install
+  
+  prepare-deployment  => Idea: Call mvn release:prepare release:perform
+  deployment          => deploy generated artifacts with the mvn release before to the tomcat
+  post-deployment     => Cleanups ?
+
+  prepare-deployment-tests 
+  deployment-tests         => check to see if deployment was successful or not?
+  post-deployment-tests
+
+  verify
+
+
+  mdt clean ? (we put anything which generated etc. into mdt folder
+
+               Maven Project (war)
+                 +-- pom.xml
+                 +-- deployment.xml
+                 +-- src
+                 +-- target
+                 +-- mdt
+         
+
+  mdt dev verify
+  mdt test verify
+  mdt pre-production verify
+  mdt production verify
+
+
+
+
 
 - Describe the destination server(s) + configuration into a deployment.xml
   -> Define the artifacts which should be used
   -> Download via aether library 
   -> Define servers etc.
+
+   <deployments>
+     <servers>
+       <server>
+        <group>production</group>>
+        <id>s1</id>
+       </server>
+       <server>
+        <group>production</group>>
+        <id>s2</id>
+        ...
+       </server>
+     </servers>
+     <deployment>
+       <id>production</id>
+       <group>production</group>
+     </deployment>
+     <deployment>
+       <id>test</id>
+     </deployment>
+   </deployments>
 
 Links
 -----
