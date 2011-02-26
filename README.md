@@ -91,15 +91,20 @@ Ideas
                  +-- src
                  +-- target
                  +-- mdt
-         
+        
+    super-deployment.xml which contains already defined steps like in Maven the Super-POM (Plugins?)
+ 
 
-  mdt dev verify
-  mdt test verify
-  mdt pre-production verify
-  mdt production verify
+  mdt verify local (local machine?)
+  mdt verify dev (different machine?)
+  mdt verify test
+  mdt verify pre-production
+  mdt verify production
 
+   ?  pre-dev, post-dev, dev, pre-test, test, post-test, pre-production, production
 
-
+  The dev, test, pre-production and production will be defined in the deployment.xml
+    (may be a list of already defined in the Super-deployment.xml
 
 
 - Describe the destination server(s) + configuration into a deployment.xml
