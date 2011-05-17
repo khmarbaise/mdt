@@ -87,11 +87,14 @@ Ideas
 
                Maven Project (war)
                  +-- pom.xml
-                 +-- deployment.xml
                  +-- src
                  +-- target
-                 +-- mdt
         
+               Maven Deployment Project (war)
+                 +-- deployment.xml  (reference to Maven Project (war))
+                 +-- src
+                 +-- mdt
+
     super-deployment.xml which contains already defined steps like in Maven the Super-POM (Plugins?)
  
 
@@ -114,15 +117,24 @@ Ideas
 
    <deployments>
      <servers>
-       <server>
-        <group>production</group>>
-        <id>s1</id>
-       </server>
-       <server>
-        <group>production</group>>
-        <id>s2</id>
-        ...
-       </server>
+       <servergroup>
+        <id>dev</id>
+        <server>
+          <...>
+        </server>
+       </servergroup>
+       <servergroup>
+        <id>test</id>
+        <server>
+          <...>
+        </server>
+       </servergroup>
+       <servergroup>
+        <id>production</id>
+        <server>
+          <...>
+        </server>
+       </servergroup>
      </servers>
      <deployment>
        <id>production</id>
