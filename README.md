@@ -156,4 +156,7 @@ Links
 - [Pallet](http://hugoduncan.github/pallet)
 
 - [Deploy System (svn based)](http://api.mutado.com/mobile/svndeploy/)
+
+- [Chef ](http://www.opscode.com/chef/)
+
   
